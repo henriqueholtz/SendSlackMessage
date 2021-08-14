@@ -13,18 +13,6 @@ namespace SendSlackMessage
         private static readonly MessageValidator _validator = new MessageValidator();
         private List<ValidationFailure> _errors = new List<ValidationFailure>();
         private static Uri WebHookUri { get; set; }
-        static void Main(string[] args)
-        {
-            do
-            {
-                Console.WriteLine();
-                Console.WriteLine("Trying validate {Message}...");
-                Message msg = new Message("username", "iconEmoji", "iconUrl", "");
-                var results = _validator.Validate(msg);
-                if (!results.IsValid) Console.WriteLine(results.ToString());
-                Console.ReadLine();
-            } while (true);
-        }
 
         public SsmClient(string webHookUrl)
         {
