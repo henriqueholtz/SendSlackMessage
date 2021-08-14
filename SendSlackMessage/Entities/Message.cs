@@ -1,8 +1,6 @@
-﻿using System;
+﻿using FluentValidation;
+using SendSlackMessage.Helpers;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SendSlackMessage.Entities
 {
@@ -23,4 +21,18 @@ namespace SendSlackMessage.Entities
             Text = text;
         }
     }
+
+    #region Validator
+    public class MessageValidator : AbstractValidator<Message>
+    {
+        public MessageValidator()
+        {
+            RuleFor(msg => new List<KeyValuePair<string, string>> { new KeyValuePair<string, string>(nameof(msg.Channel), msg.Channel) }).Custom((list, context) =>
+            {
+                KeyValuePair<bool, string> customResult = SsmHelper.ValidateStrings(list);
+                if (!customResult.Key) context.AddFailure(customResult.Value);
+            });
+        }
+    }
+    #endregion
 }
