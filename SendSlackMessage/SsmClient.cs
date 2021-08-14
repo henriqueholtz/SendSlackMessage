@@ -19,7 +19,7 @@ namespace SendSlackMessage
             {
                 Console.WriteLine();
                 Console.WriteLine("Trying validate {Message}...");
-                Message msg = new Message("", "username", "iconEmoji", "iconUrl", "");
+                Message msg = new Message("username", "iconEmoji", "iconUrl", "");
                 var results = _validator.Validate(msg);
                 if (!results.IsValid) Console.WriteLine(results.ToString());
                 Console.ReadLine();

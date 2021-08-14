@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31605.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendSlackMessage", "SendSlackMessage.csproj", "{C54EB5FA-CD80-4E59-B405-718584B68561}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SendSlackMessage", "SendSlackMessage.csproj", "{C54EB5FA-CD80-4E59-B405-718584B68561}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendSlackMessage.Demo", "..\SendSlackMessage.Demo\SendSlackMessage.Demo.csproj", "{F78C559C-CAAF-40C6-ACF6-989F1CE8B3B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C54EB5FA-CD80-4E59-B405-718584B68561}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C54EB5FA-CD80-4E59-B405-718584B68561}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C54EB5FA-CD80-4E59-B405-718584B68561}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F78C559C-CAAF-40C6-ACF6-989F1CE8B3B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F78C559C-CAAF-40C6-ACF6-989F1CE8B3B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F78C559C-CAAF-40C6-ACF6-989F1CE8B3B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F78C559C-CAAF-40C6-ACF6-989F1CE8B3B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
