@@ -7,7 +7,8 @@ namespace SendSlackMessage.Entities
 {
     public class Message
     {
-        //public string Channel { get; private set; }
+        [JsonPropertyName("channel")]
+        public string Channel { get; private set; }
 
         [JsonPropertyName("username")]
         public string Username { get; private set; }
@@ -21,9 +22,9 @@ namespace SendSlackMessage.Entities
         [JsonPropertyName("text")]
         public string Text { get; private set; }
 
-        public Message(/*string channel,*/ string username, string iconEmoji, string iconUrl, string text)
+        public Message(string channel, string username, string iconEmoji, string iconUrl, string text)
         {
-            //Channel = channel;
+            Channel = channel;
             Username = username;
             IconEmoji = iconEmoji;
             IconUrl = iconUrl;
@@ -38,7 +39,7 @@ namespace SendSlackMessage.Entities
         {
             RuleFor(msg => new List<KeyValuePair<string, string>> { 
                 new KeyValuePair<string, string>(nameof(msg.Username), msg.Username),
-                new KeyValuePair<string, string>(nameof(msg.Username), msg.Username)
+                new KeyValuePair<string, string>(nameof(msg.Text), msg.Text)
                 }).Custom((list, context) =>
             {
                 KeyValuePair<bool, string> customResult = SsmHelper.ValidateStrings(list);
