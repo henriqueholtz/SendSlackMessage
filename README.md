@@ -26,4 +26,5 @@ A package .net to send slack message by webhooks
 - **@group notification:** `<!group> Hello Group!`; 
 - **@here notification:** `<!here> Hello!`; 
 - **@here notification:** `<!everyone> Hello Everyone!`; 
-- **Override channel:** Send property `Channel` to override channel of web-hook
+- **Override channel:** Send property `Channel` (to override channel of web-hook);
+- **Send Direct Message to user: ** Send Property `Channel` as `@usernameDestiny` (to override channel of web-hook);
