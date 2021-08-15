@@ -1,4 +1,4 @@
-# SendSlackMessage
+# <img align="center" alt="Henrique-Csharp" height="40" width="40" src="./SendSlackMessage/logo.ico" /> SendSlackMessage 
 
 A package .net to send slack message by webhooks
 
