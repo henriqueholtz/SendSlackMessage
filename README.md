@@ -17,3 +17,12 @@ A package .net to send slack message by webhooks
 1. Create or get you web hook url from Slack (Access the link above)
 
 2. Only clone this repository, configure the keys in `app.config`, build and execute the console application `SendSlackMessage.Demo`
+
+
+## Use cases (Examples)
+- Add link: `<https://myurl.example.com|Click here or text>`;
+- Break line: `\n`;
+- @channel notification: `<!channel> Hello channel!`; 
+- @group notification: `<!group> Hello Group!`; 
+- @here notification: `<!here> Hello!`; 
+- @here notification: `<!everyone> Hello Everyone!`; 
