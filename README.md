@@ -21,10 +21,10 @@ A package .net to send slack message by webhooks
 
 ## Use cases (Examples)
 - **Add link:** `<https://myurl.example.com|Click here or text>`;
-- **Break line:** `\n`;
+- <s>**Break line:** `\n`</s> (Soon);
 - **@channel notification:** `<!channel> Hello channel!`; 
 - **@group notification:** `<!group> Hello Group!`; 
 - **@here notification:** `<!here> Hello!`; 
 - **@here notification:** `<!everyone> Hello Everyone!`; 
 - **Override channel:** Send property `Channel` (to override channel of web-hook);
-- **Send Direct Message to user: ** Send Property `Channel` as `@usernameDestiny` (to override channel of web-hook);
+- **Send Direct Message to user:** Send Property `Channel` as `@usernameDestiny` (to override channel of web-hook);
