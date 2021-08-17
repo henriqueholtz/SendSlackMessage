@@ -28,3 +28,6 @@ A package .net to send slack message by webhooks
 - **@here notification:** `<!everyone> Hello Everyone!`; 
 - **Override channel:** Send property `Channel` (to override channel of web-hook);
 - **Send Direct Message to user:** Send Property `Channel` as `@usernameDestiny` (to override channel of web-hook);
+- To write **bold** text: `*bold text*`;
+- To write _italic text_: `_italic text_`;
+- To write ~~scretched~~ text: `~scretched text~`;
