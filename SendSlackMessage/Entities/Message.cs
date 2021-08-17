@@ -21,14 +21,17 @@ namespace SendSlackMessage.Entities
 
         [JsonPropertyName("text")]
         public string Text { get; private set; }
+        [JsonPropertyName("mrkdwn")]
+        public bool MarkDown { get; private set; }
 
-        public Message(string channel, string username, string iconEmoji, string iconUrl, string text)
+        public Message(string channel, string username, string iconEmoji, string iconUrl, string text, bool markdown = true)
         {
             Channel = channel;
             Username = username;
             IconEmoji = iconEmoji;
             IconUrl = iconUrl;
             Text = text;
+            MarkDown = markdown;
         }
     }
 
