@@ -21,7 +21,7 @@ A package .net to send slack message by webhooks
 
 ## Use cases (Examples)
 - **Add link:** `<https://myurl.example.com|Click here or text>`;
-- <s>**Break line:** `\n`</s> (Soon);
+- **Break line:** `\n` (_This still doesn't work when write_ `\n` _with_ `Console.Readline`);
 - **@channel notification:** `<!channel> Hello channel!`; 
 - **@group notification:** `<!group> Hello Group!`; 
 - **@here notification:** `<!here> Hello!`; 
@@ -31,3 +31,4 @@ A package .net to send slack message by webhooks
 - To write **bold** text: `*bold text*`;
 - To write _italic text_: `_italic text_`;
 - To write ~~scretched~~ text: `~scretched text~`;
+- To write without _markdown_ (default is true): Sned property `Markdown = false`; 
