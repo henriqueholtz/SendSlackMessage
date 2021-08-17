@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using SendSlackMessage.Enums;
 using SendSlackMessage.Helpers;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
@@ -23,6 +24,10 @@ namespace SendSlackMessage.Entities
         public string Text { get; private set; }
         [JsonPropertyName("mrkdwn")]
         public bool MarkDown { get; private set; }
+        private string _responseType;
+
+        [JsonPropertyName("response_type")]
+        private string ResponseType { get => string.IsNullOrWhiteSpace(_responseType) ? "ephemeral" : _responseType; set => _responseType = value; }
 
         public Message(string channel, string username, string iconEmoji, string iconUrl, string text, bool markdown = true)
         {
@@ -32,6 +37,32 @@ namespace SendSlackMessage.Entities
             IconUrl = iconUrl;
             Text = text;
             MarkDown = markdown;
+        }
+
+        public Message SetChannel(string channelOverride = "")
+        {
+            Channel = channelOverride;
+            return this;
+        }
+
+        public Message SetUserWithEmoji(string username, string iconEmoji)
+        {
+            Username = username;
+            IconEmoji = iconEmoji;
+            return this;
+        }
+
+        public Message SetUserWithIconUrl(string username, string iconUrl)
+        {
+            Username = username;
+            IconUrl = iconUrl;
+            return this;
+        }
+
+        public Message SetResponseType(EnumResponseType responseType)
+        {
+            ResponseType = responseType.ToString();
+            return this;
         }
     }
 
