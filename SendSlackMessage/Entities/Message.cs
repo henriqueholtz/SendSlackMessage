@@ -29,6 +29,10 @@ namespace SendSlackMessage.Entities
         [JsonPropertyName("response_type")]
         private string ResponseType { get => string.IsNullOrWhiteSpace(_responseType) ? "ephemeral" : _responseType; set => _responseType = value; }
 
+
+        [JsonPropertyName("attachments")]
+        public List<Attachment> Attachments { get; set; }
+
         public Message(string channel, string username, string iconEmoji, string iconUrl, string text, bool markdown = true)
         {
             Channel = channel;
