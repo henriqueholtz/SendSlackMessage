@@ -52,11 +52,12 @@ namespace SendSlackMessage.Demo
                     {
                         Console.WriteLine("Loading menu of options....");
                         Console.WriteLine();
-                        MenuOptions();
+                        message = MenuOptions();
                     }
 
                     if (message != null)
                     {
+                        message.SetChannel(_channelOverride); //To override channel
                         Console.WriteLine("Sending message to Slack...");
                         var response = client.Send(message);
                         Console.WriteLine(response.Result.ToString());
@@ -82,14 +83,35 @@ namespace SendSlackMessage.Demo
             return new Message(_channelOverride, _username, Emoji.Coffee, _iconUrl, text, true);
         }
 
-        static void MenuOptions()
+        static Message MenuOptions()
         {
             Console.WriteLine("-----------------------------------");
             Console.WriteLine("---            Menu             ---");
             Console.WriteLine("-----------------------------------");
-            Console.WriteLine("Option in construction, select dynamic mode please.");
-            //Console.WriteLine("1- ");
-            //Console.WriteLine("2- ");
+            Console.WriteLine("1- Simple option");
+
+            string option = Console.ReadLine();
+            int opt = 0;
+            while (!int.TryParse(option.Trim(), out opt) || opt <= 0)
+            {
+                Console.Write("Invalid number. Try again: ");
+                option = Console.ReadLine();
+            }
+            return Option(opt);
+        }
+
+        static Message Option(int option)
+        {
+            Console.WriteLine($"Selected: {option}");
+            switch (option)
+            {
+                case 1:
+                    return new Message("override after", "SendSlackMessage - 1", Emoji.Coffee, "", "This is a first option predefined.");
+                //case 2:
+                //    break;
+                default:
+                    return new Message("override after", "SendSlackMessage - Default", Emoji.Bomb, "", "This is a default option predefined.");
+            }
         }
     }
 }
