@@ -47,21 +47,28 @@ namespace SendSlackMessage.Entities
 
         [JsonPropertyName("footer")]
         public string Footer { get; set; }
+
         [JsonPropertyName("footer_icon")]
         public string FooterIcon { get; set; }
 
         [JsonPropertyName("ts")]
         public string FooterTimeStamp { get; set; }
 
+
+        /* Constructors */ 
         public Attachment() {  }
-        public Attachment SetFooter(string footerText, string footerIcon/*, DateTime footerTimeStamp*/)
+        public Attachment(string text)
         {
-            Footer = footerText;
-            FooterIcon = footerIcon;
-            //lack set FooterTimeStamp
-            return this;
+            Text = text;
+        }
+        public Attachment(string text, string color)
+        {
+            Text = text;
+            Color = color;
         }
 
+
+        /* Methods */
         public Attachment AddField(string title, string value, bool _short = false)
         {
             Fields.Add(new Field
@@ -73,7 +80,13 @@ namespace SendSlackMessage.Entities
 
             return this;
         }
-
+        public Attachment SetFooter(string footerText, string footerIcon/*, DateTime footerTimeStamp*/)
+        {
+            Footer = footerText;
+            FooterIcon = footerIcon;
+            //lack set FooterTimeStamp
+            return this;
+        }
         public Attachment SetAuthor(string authorName, string authorLink = null, string authorIcon = null)
         {
             AuthorName = authorName;
@@ -81,7 +94,6 @@ namespace SendSlackMessage.Entities
             AuthorIcon = authorIcon;
             return this;
         }
-
         public Attachment SetColor(EnumColor color)
         {
             switch(color)
@@ -104,6 +116,11 @@ namespace SendSlackMessage.Entities
         public Attachment SetColor(string hexCodeColor)
         {
             Color = hexCodeColor;
+            return this;
+        }
+        public Attachment setText(string text)
+        {
+            Text = text;
             return this;
         }
     }

@@ -95,6 +95,11 @@ namespace SendSlackMessage.Entities
             MarkDown = markdown;
             return this;
         }
+        public Message ClearAttachments()
+        {
+            Attachments.Clear();
+            return this;
+        }
     }
 
     #region Validator
