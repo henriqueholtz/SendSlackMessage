@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace SendSlackMessage.Tets
+namespace SendSlackMessage.Tests
 {
     public class BasicTests
     {

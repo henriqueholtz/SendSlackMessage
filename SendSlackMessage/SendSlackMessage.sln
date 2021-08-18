@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SendSlackMessage", "SendSla
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SendSlackMessage.Demo", "..\SendSlackMessage.Demo\SendSlackMessage.Demo.csproj", "{F78C559C-CAAF-40C6-ACF6-989F1CE8B3B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendSlackMessage.Tets", "..\SendSlackMessage.Tets\SendSlackMessage.Tets.csproj", "{5B67CC7A-0FEA-4CA8-97A3-8600D478E4D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SendSlackMessage.Tests", "..\SendSlackMessage.Tests\SendSlackMessage.Tests.csproj", "{5B67CC7A-0FEA-4CA8-97A3-8600D478E4D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
