@@ -2,20 +2,22 @@
 using System;
 using System.Configuration;
 
+//Get or Create your webHookUrl here: https://my.slack.com/services/new/incoming-webhook/
+//Some instructions here: https://github.com/henriqueholtz/SendSlackMessage/blob/master/README.md
 namespace SendSlackMessage.Demo
 {
     internal static class Program
     {
+        #region static variables
         private static readonly string _webHookUrl = ConfigurationManager.AppSettings.Get("WebHookUrl").ToString(); //PUT YOUR WEB HOOK URL IN App.Config[WebHookUrl] 
         private static string _username = ConfigurationManager.AppSettings.Get("UserName").ToString(); //PUT YOUR USER IN App.Config[UserName]
         private static readonly string _iconUrl = ConfigurationManager.AppSettings.Get("IconUrl").ToString(); //PUT YOUR USER IN App.Config[IconUrl] - Optional
         private static string _channelOverride = ConfigurationManager.AppSettings.Get("Channel").ToString(); //PUT YOUR USER IN App.Config[Channel] - Optional (to override channel of web-hook)
+        #endregion
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Demo of ** SendSlackMessage **");
             Console.WriteLine("Initializing demo...");
-            //Get or Create your webHookUrl here: https://my.slack.com/services/new/incoming-webhook/
-            //Some instructions here: https://github.com/henriqueholtz/SendSlackMessage/blob/master/README.md
             try
             {
                 var client = new SsmClient(_webHookUrl);
@@ -38,6 +40,7 @@ namespace SendSlackMessage.Demo
                 }
                 #endregion
 
+                #region select mode
                 for (var i = 0; i < 100; i++)
                 {
                     Console.WriteLine();
@@ -63,6 +66,7 @@ namespace SendSlackMessage.Demo
                         Console.WriteLine(response.Result.ToString());
                     }
                 }
+                #endregion
             }
             catch(Exception ex)
             {
