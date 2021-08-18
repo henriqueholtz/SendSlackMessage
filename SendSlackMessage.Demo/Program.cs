@@ -19,12 +19,25 @@ namespace SendSlackMessage.Demo
             {
                 var client = new SsmClient(_webHookUrl);
 
-                for(var i = 0; i < 100; i++)
+                for (var i = 0; i < 100; i++)
                 {
+                    Console.WriteLine("----------------------------------------------------------------------------------------------");
+                    string channel = _channelOverride;
+                    if (String.IsNullOrWhiteSpace(channel))
+                    {
+                        Console.WriteLine("Couldn't possible get the channel from your config. Write (or leave blank to no override) and press Enter.");
+                        channel = Console.ReadLine();
+                    }
                     Console.WriteLine();
+                    string username = _username;
+                    if (String.IsNullOrWhiteSpace(username))
+                    {
+                        Console.WriteLine("Couldn't possible get the username from your config. Write (or leave blank to no override) and press Enter.");
+                        username = Console.ReadLine();
+                    }
                     Console.WriteLine("Write the text and press Enter to send to Slack:");
                     string text = Console.ReadLine();
-                    var message = new Message(_channelOverride, _username, Emoji.Coffee, _iconUrl, text, true);
+                    var message = new Message(channel, username, Emoji.Coffee, _iconUrl, text, true);
                     Console.WriteLine("Sending message to Slack...");
 
                     var response = client.Send(message);
