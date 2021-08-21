@@ -1,5 +1,4 @@
-﻿using FluentValidation.Results;
-using SendSlackMessage.Entities;
+﻿using SendSlackMessage.Entities;
 using SendSlackMessage.Exceptions;
 using System;
 using System.Collections.Generic;

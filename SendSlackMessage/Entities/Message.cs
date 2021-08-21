@@ -1,5 +1,4 @@
-﻿using FluentValidation;
-using SendSlackMessage.Enums;
+﻿using SendSlackMessage.Enums;
 using SendSlackMessage.Helpers;
 using System.Collections.Generic;
 using System.Linq;
