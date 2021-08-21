@@ -10,8 +10,6 @@ namespace SendSlackMessage
 {
     public class SsmClient
     {
-        private static readonly MessageValidator _validator = new MessageValidator();
-        private List<ValidationFailure> _errors = new List<ValidationFailure>();
         private static Uri WebHookUri { get; set; }
 
         public SsmClient(string webHookUrl)
@@ -21,36 +19,30 @@ namespace SendSlackMessage
 
         public Task<string> Send(Message message)
         {
-            if (ValidateRequest(message))
+            try
             {
                 var requestBody = JsonSerializer.Serialize(message);
                 return SsmRequest.Process(WebHookUri, requestBody);
             }
-            throw new Exception("Don't can Send message. Error of validation!");
+            catch(Exception)
+            {
+                throw;
+            }
         }
 
         public Task<string> SendAsync(Message message)
         {
-            if (ValidateRequest(message))
-            {
+            try
+            { 
                 var requestBody = JsonSerializer.Serialize(message);
                 return SsmRequest.ProcessAsync(WebHookUri, requestBody);
             }
-            throw new Exception("Don't can Send message (async). Error of validation!");
-        }
-
-
-        private bool ValidateRequest(Message message)
-        {
-            ValidationResult result = _validator.Validate(message);
-            if (result.IsValid && Uri.IsWellFormedUriString(WebHookUri.AbsoluteUri, UriKind.RelativeOrAbsolute))
+            catch (Exception)
             {
-                _errors.Clear();
-                return true;
+                throw;
             }
-            _errors.AddRange(result.Errors);
-            return false;
         }
+
 
         private void CreateUri(string url)
         {

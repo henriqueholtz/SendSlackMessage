@@ -120,21 +120,4 @@ namespace SendSlackMessage.Entities
             return this;
         }
     }
-
-    #region Validator
-    public class MessageValidator : AbstractValidator<Message>
-    {
-        public MessageValidator()
-        {
-            RuleFor(msg => new List<KeyValuePair<string, string>> { 
-                //new KeyValuePair<string, string>(nameof(msg.Username), msg.Username),
-                new KeyValuePair<string, string>(nameof(msg.Text), msg.Text)
-                }).Custom((list, context) =>
-            {
-                KeyValuePair<bool, string> customResult = SsmHelper.ValidateStrings(list);
-                if (!customResult.Key) context.AddFailure(customResult.Value);
-            });
-        }
-    }
-    #endregion
 }
