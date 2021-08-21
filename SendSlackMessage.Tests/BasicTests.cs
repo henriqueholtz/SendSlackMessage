@@ -1,18 +1,23 @@
 using NUnit.Framework;
+using SendSlackMessage.Demo;
+using SendSlackMessage.Entities;
 
 namespace SendSlackMessage.Tests
 {
     public class BasicTests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
+        private static readonly string _webHookUrl = "";
+        private static readonly SsmClient client = new SsmClient(_webHookUrl);
+        
         [Test]
-        public void Test1()
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(3)]
+        public void Test1(int option)
         {
-            Assert.Pass();
+            Message message = Options.GetOptionByCode(option);
+            var response = client.Send(message);
+            Assert.Pass("ok", response.Result);
         }
     }
 }

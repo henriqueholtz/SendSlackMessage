@@ -14,16 +14,16 @@ namespace SendSlackMessage.Demo
             switch (code)
             {
                 case 1:
-                    return new Message("override after", "SendSlackMessage - 1", Emoji.Coffee, "", "This is a first option predefined.");
+                    return new Message("", "SendSlackMessage - 1", Emoji.Coffee, "", "This is a first option predefined.");
                 case 2:
-                    return new Message("override after", "You are using SendSlackMessages by Henrique Holtz.", new List<Attachment>
+                    return new Message("", "You are using SendSlackMessages by Henrique Holtz.", new List<Attachment>
                     {
                         new Attachment("This is the first Line (Attachment)"),
                         new Attachment("This is the second Line (Attachment)", "good", new List<Field>()
                         )
                     });
                 case 3:
-                    return new Message("override after", "You are using SendSlackMessages by Henrique Holtz.", new List<Attachment>
+                    return new Message("", "You are using SendSlackMessages by Henrique Holtz.", new List<Attachment>
                     {
                         new Attachment("This is the first Line (Attachment) - without field"),
                         new Attachment("This is the second Line (Attachment) with field", "good", new List<Field>()
@@ -32,7 +32,7 @@ namespace SendSlackMessage.Demo
                         })
                     });
                 default:
-                    return new Message("override after", "SendSlackMessage - Default", Emoji.Bomb, "", "This is a default option predefined.");
+                    return new Message("", "SendSlackMessage - Default", Emoji.Bomb, "", "This is a default option predefined.");
             }
         }
     }
