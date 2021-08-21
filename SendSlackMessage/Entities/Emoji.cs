@@ -46,6 +46,7 @@
         public const string Five = ":five:";
         public const string FloppyDisk = ":floppy_disk:";
         public const string Four = ":four:";
+        public const string HeavyCheckMark = ":heavy_check_mark:";
 
         /* K - O */
         public const string LargeBlueCircle = ":large_blue_circle:";

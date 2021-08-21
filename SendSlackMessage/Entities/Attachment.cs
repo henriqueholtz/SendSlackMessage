@@ -20,7 +20,7 @@ namespace SendSlackMessage.Entities
         public string Pretext { get; set; }
 
         [JsonPropertyName("fields")]
-        public List<Field> Fields { get; set; } = new List<Field>();
+        public List<Field> Fields { get; private set; } = new List<Field>();
         /// <summary>
         ///     Can either be one of 'good', 'warning', 'danger', or any hex color code
         /// </summary>
@@ -65,6 +65,18 @@ namespace SendSlackMessage.Entities
         {
             Text = text;
             Color = color;
+        }
+        public Attachment(string text, string color, List<Field> fields)
+        {
+            Text = text;
+            Color = color;
+            if (fields?.Any() == true) Fields = fields;
+        }
+        public Attachment(string text, string color, Field field)
+        {
+            Text = text;
+            Color = color;
+            Fields.Add(field);
         }
 
 

@@ -2,6 +2,7 @@
 using SendSlackMessage.Enums;
 using SendSlackMessage.Helpers;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Serialization;
 
 namespace SendSlackMessage.Entities
@@ -31,7 +32,7 @@ namespace SendSlackMessage.Entities
         private string ResponseType { get => string.IsNullOrWhiteSpace(_responseType) ? "ephemeral" : _responseType; set => _responseType = value; }
 
         [JsonPropertyName("attachments")]
-        public List<Attachment> Attachments { get; set; } = new List<Attachment>();
+        public List<Attachment> Attachments { get; private set; } = new List<Attachment>();
 
 
         /* Constructors */
@@ -54,6 +55,19 @@ namespace SendSlackMessage.Entities
             IconUrl = iconUrl;
             Text = text;
             MarkDown = markdown;
+        }
+        public Message(string channelOverride, string text, string username, List<Attachment> attachments)
+        {
+            Text = text;
+            Username = username;
+            Channel = channelOverride;
+            if (attachments?.Any() == true) Attachments = attachments;
+        }
+        public Message(string channelOverride, string text, List<Attachment> attachments)
+        {
+            Text = text;
+            Channel = channelOverride;
+            if (attachments?.Any() == true) Attachments = attachments;
         }
 
 
@@ -90,6 +104,11 @@ namespace SendSlackMessage.Entities
             Attachments.Add(attachment);
             return this;
         }
+        public Message AddAttachments(IEnumerable<Attachment> attachments)
+        {
+            Attachments.AddRange(attachments);
+            return this;
+        }
         public Message SetMarkdwon(bool markdown)
         {
             MarkDown = markdown;
@@ -108,7 +127,7 @@ namespace SendSlackMessage.Entities
         public MessageValidator()
         {
             RuleFor(msg => new List<KeyValuePair<string, string>> { 
-                new KeyValuePair<string, string>(nameof(msg.Username), msg.Username),
+                //new KeyValuePair<string, string>(nameof(msg.Username), msg.Username),
                 new KeyValuePair<string, string>(nameof(msg.Text), msg.Text)
                 }).Custom((list, context) =>
             {
