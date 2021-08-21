@@ -68,6 +68,12 @@ namespace SendSlackMessage.Entities
             Channel = channelOverride;
             if (attachments?.Any() == true) Attachments = attachments;
         }
+        public Message(string channelOverride, string text, Attachment attachment)
+        {
+            Text = text;
+            Channel = channelOverride;
+            Attachments.Add(attachment);
+        }
 
 
         /* Methods */
@@ -103,9 +109,9 @@ namespace SendSlackMessage.Entities
             Attachments.Add(attachment);
             return this;
         }
-        public Message AddAttachments(IEnumerable<Attachment> attachments)
+        public Message AddAttachments(List<Attachment> attachments)
         {
-            Attachments.AddRange(attachments);
+            if (attachments?.Any() == true) Attachments.AddRange(attachments);
             return this;
         }
         public Message SetMarkdwon(bool markdown)

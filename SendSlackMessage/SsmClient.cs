@@ -1,7 +1,6 @@
 ﻿using SendSlackMessage.Entities;
 using SendSlackMessage.Exceptions;
 using System;
-using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
 
